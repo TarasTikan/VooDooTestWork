@@ -11,8 +11,7 @@ const basketContainer = document.querySelector('#basket');
 const basketExit = document.querySelector('#basketExit');
 
 listProduct.addEventListener('click', handleAddCard);
-listProductBasket.addEventListener('click', handlePlusBtn);
-listProductBasket.addEventListener('click', handleMinusBtn);
+listProductBasket.addEventListener('click', handleMinusAndPlus);
 listProductBasket.addEventListener('click', handleRemoveCard);
 basketBtn.addEventListener('click', handelToggleBasket);
 basketExit.addEventListener('click', handelToggleBasket);
@@ -99,19 +98,17 @@ function totalProductsNumber() {
   totalProducts.insertAdjacentHTML('beforeend', total);
 }
 
-function handlePlusBtn(e) {
-  if (!e.target.id.includes('plus')) return;
-  const splices = e.target.id.split('-');
-  const product = productItem.find(({ id }) => id === Number(splices[1]));
-  product.number = product.number + 1;
+function handleMinusAndPlus(e) {
+  if (e.target.id.includes('plus')) {
+    const splices = e.target.id.split('-');
+    const product = productItem.find(({ id }) => id === Number(splices[1]));
+    product.number = product.number + 1;
+  } else {
+    const splices = e.target.id.split('-');
+    const product = productItem.find(({ id }) => id === Number(splices[1]));
+    product.number = product.number === 1 ? 1 : product.number - 1;
+  }
 }
-function handleMinusBtn(e) {
-  if (!e.target.id.includes('minus')) return;
-  const splices = e.target.id.split('-');
-  const product = productItem.find(({ id }) => id === Number(splices[1]));
-  product.number = product.number === 1 ? 1 : product.number - 1;
-}
-
 function handelToggleBasket() {
   basketContainer.classList.toggle('hidden');
 }
