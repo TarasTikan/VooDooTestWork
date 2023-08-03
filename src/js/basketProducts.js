@@ -1,5 +1,6 @@
 import { products } from "./fetchProducts.js";
 import { limit, page } from "./index.js";
+
 const listProduct = document.querySelector("#listProduct");
 const listProductBasket = document.querySelector("#listProductBasket");
 const totalPrice = document.querySelector("#totalPrice");
@@ -79,7 +80,7 @@ const renderProductsBaket = () => {
       return `
       <li class="flex gap-4 items-start ">
         <img
-          src="${images.length > 0 ? images[0].src : "../img/not-images.jpg"}"
+          src="${images.length > 0 ? images[0].src : './images/not-images.jpg'}"
           class="rounded-md border border-white border-opacity-50 w-[74px]"
         />
         <div class="flex flex-col  justify-between w-widthInfoProduct h-heightImgBasket grid">
@@ -88,7 +89,7 @@ const renderProductsBaket = () => {
           <div class="flex"><button type='button' class="w-5 h-5 text-center text-yellow-50 text-sm font-bold" id="minus-${id}">-</button><p class="w-5 h-5 text-center text-yellow-50 text-sm font-bold" id="number">${number}</p><button type='button' class="w-5 h-5 text-center text-yellow-50 text-sm font-bold" id="plus-${id}">+</button></div>
         </div>
         <button type='button' id="${id}"><svg width="24px" height="24px" id="${id}">
-          <use href="./img/icons.svg#icon-deleteIcon" id="${id}"></use>
+          <use href="./images/icons.svg#icon-deleteIcon" id="${id}"></use>
         </svg></button>
       </li>`;
     })

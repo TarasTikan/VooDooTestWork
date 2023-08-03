@@ -5,7 +5,8 @@
   "homepage": "https://TarasTikan.github.io/VooDooTestWork",
   "scripts": {
     "start": "parcel src/*.html",
-    "build": "parcel build src/*.html --public-url /VooDooTestWork/"
+    "build": "parcel build src/*.html --public-url /VooDooTestWork/",
+    "start:dev": "npx tailwindcss -i ./src/input.css -o ./src/css/style.css --watch"
   },
   "repository": {
     "type": "git",
@@ -24,7 +25,8 @@
     "@parcel/transformer-sass": "^2.6.0",
     "parcel": "^2.6.0",
     "parcel-reporter-clean-dist": "^1.0.4",
-    "posthtml-include": "^1.7.4"
+    "posthtml-include": "^1.7.4",
+    "tailwindcss": "^3.3.3"
   },
   "browserslist": "> 0.5%, last 2 versions, not dead"
 }
