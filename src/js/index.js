@@ -1,3 +1,4 @@
+import imagesNot from '../images/not-images.jpg';
 import { products } from "./fetchProducts.js";
 const paginationContainer = document.querySelector("#pagination");
 export const limit = 24;
@@ -79,7 +80,6 @@ products(limit, page).then((res) => {
   renderProducts(res.products);
   calculatePagination(461);
 });
-
 function renderProducts(data) {
   const productItem = data
     .map(({ title, images, id, variants }) => {
@@ -87,7 +87,7 @@ function renderProducts(data) {
     <li class="w-[342px] grid gap-3 lg:w-[300px]" id="${id}">
    <div class="relative">
      <img
-       src="${images.length > 0 ? images[0].src : './images/not-images.jpg'}"
+       src="${images.length > 0 ? images[0].src : imagesNot}"
        class="border border-black rounded w-[342px] lg:w-[300px] h-[300px]"
      />
      <p class="top-3 left-3 flex items-center justify-center absolute w-12 h-6 p-2 bg-black rounded items-start gap-2.5 inline-flex text-yellow-50 text-xs font-normal uppercase">
