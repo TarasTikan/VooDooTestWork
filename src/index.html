@@ -1,14 +1,248 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Page title</title>
-    <link rel="stylesheet" href="./sass/index.scss" />
-    <script type="module" src="./index.js"></script>
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;700&family=Space+Grotesk:wght@400;500;700&family=Space+Mono:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/style.css" />
   </head>
-  <body>
-<h1>hello</h1>
-    <include src="./partials/example.html"></include>
+  <body class="bg-yellow-50 text-black">
+    <header
+      class="container flex items-center py-6 lg:py-12 border-b border-black px-6"
+    >
+      <div
+        class="w-widthMobileContainer mx-auto flex justify-between lg:w-widthContainer"
+      >
+        <div class="flex gap-3">
+          <svg class="w-6 h-6 lg:w-12 lg:h-12">
+            <use href="./img/icons.svg#icon-Logomark"></use>
+          </svg>
+          <img
+            src="./img/VooDooTest.png"
+            alt="logo-text"
+            class="w-[107px] h-[50px] lg:w-[192px] lg:h-[97px]"
+          />
+        </div>
+        <nav>
+          <ul class="flex gap-x-4 lg:gap-12 justify-center items-center">
+            <li>
+              <div class="flex flex-col items-center relative z-10">
+                <button type="button" data-action="close">
+                  <svg class="w-6 h-6">
+                    <use href="./img/icons.svg#icon-shopping-cart-1-1"></use>
+                  </svg>
+                </button>
+
+                <div
+                  class="bg-black px-10 w-widthBasketContainer py-12 fixed sm:top-1/2 sm:left-1/2 sm:transform lg:absolute -translate-x-1/2 -translate-y-1/2 lg:top-10 lg:-translate-y-0 lg:right-10 hidden"
+                  id="basket"
+                >
+                  <div class="flex justify-between items-center">
+                    <h1
+                      class="text-yellow-50 font-space-grotesk font-bold text-2xl"
+                    >
+                      Shopping Cart
+                    </h1>
+                    <button type="button" id="basketExit">
+                      <svg class="w-6 h-6">
+                        <use href="./img/icons.svg#icon-close-line"></use>
+                      </svg>
+                    </button>
+                  </div>
+                  <ul
+                    class="flex flex-col pt-14 pb-8 gap-10 border-y border-solid border-yellow-50 mt-6 mb-9 sm:max-h-[400px] sm:overflow-y-auto"
+                    id="listProductBasket"
+                  ></ul>
+                  <div class="flex justify-between">
+                    <p
+                      class="text-yellow-50 text-sm font-bold"
+                      id="totalProdacts"
+                    ></p>
+                    <p
+                      class="text-yellow-50 text-sm font-bold"
+                      id="totalPrice"
+                    ></p>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li>
+              <button
+                type="button"
+                class="w-[101px] h-[38px] p-3 bg-black rounded justify-start items-start flex justify-center items-center gap-2.5 inline-flex text-center text-white text-xl font-bold lg:w-78 lg:h-34 lg:space-x-2.5 lg:text-xl lg:text-yellow-50 lg:text-sm"
+              >
+                Sign-up
+              </button>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <main class="px-6">
+      <section class="pt-6 lg:pt-24 lg:pb-48 pb-52">
+        <div class="w-widthMobileContainer mx-auto lg:w-widthContainer">
+          <div
+            class="w-full flex bg-black px-6 py-6 lg:mb-12 mb-[74px] items-center"
+            id="blackAlrert"
+          >
+            <div class="flex mb-auto">
+              <svg class="w-6 h-6">
+                <use href="./img/icons.svg#icon-alert-circle"></use>
+              </svg>
+              <p
+                class="text-yellow-50 text-center font-space-grotesk text-infoText font-bold mr-12 ml-1.5"
+              >
+                ALPHA
+              </p>
+            </div>
+            <div class="mr-auto">
+              <p
+                class="flex text-yellow-50 font-space-grotesk font-medium text-importantText mb-3 w-36 h-[10px] lg:w-60"
+              >
+                Important info
+                <span
+                  class="ml-1 text-yellow-50 font-space-grotesk font-medium text-importantText hidden lg:block"
+                  >regarding our service</span
+                >
+              </p>
+              <p
+                class="w-widthImortantText text-yellow-50 font-space-grotesk font-medium text-importantText hidden"
+                id="importantText"
+              >
+                We’re working on a new service to offer you returned online
+                goods at a discount near you. Very limited assortment of items
+                that we resell All sorts of product categories Focus on testing
+                the ordering and pick-up experience Returned items from other
+                shoppers Select product categories Focus on end-to-end service
+                experience
+              </p>
+            </div>
+            <img
+              src="./img/chevron-down.png"
+              alt="arrow-down"
+              class="ml-auto mb-auto ml-12 transition-all duration-250 ease-out"
+              id="imageArrow"
+            />
+          </div>
+
+          <ul
+            id="listProduct"
+            class="flex flex-col gap-12 lg:gap-6 lg:flex-wrap lg:flex-row"
+          ></ul>
+          <ul
+            id="pagination"
+            class="flex gap-2.5 mt-[70px] justify-center"
+          ></ul>
+        </div>
+      </section>
+    </main>
+    <footer class="bg-white py-12 px-12 lg:py-[84px]">
+      <div
+        class="flex justify-center flex-col w-[300px] lg:w-widthContainer lg:flex-row gap-12 lg:gap-6 mx-auto"
+      >
+        <div class="w-[300px] flex items-center hidden lg:block">
+          <svg class="w-20 h-20">
+            <use href="./img/icons.svg#icon-Logomark"></use>
+          </svg>
+        </div>
+        <ul class="flex flex-col gap-[19px] w-[300px]">
+          <li>
+            <p
+              class="text-black text-capitalize font-space-mono text-lg font-bold"
+            >
+              FAQ
+            </p>
+          </li>
+          <li>
+            <p
+              class="text-black text-capitalize font-space-mono text-lg font-bold"
+            >
+              RETURNS
+            </p>
+          </li>
+          <li>
+            <p
+              class="text-black text-capitalize font-space-mono text-lg font-bold"
+            >
+              CONTACT
+            </p>
+          </li>
+        </ul>
+        <ul class="flex flex-col gap-[19px] w-[300px]">
+          <li>
+            <p
+              class="text-black text-capitalize font-space-mono text-lg font-bold"
+            >
+              TERMS & CONDITIONS
+            </p>
+          </li>
+          <li>
+            <p
+              class="text-black text-capitalize font-space-mono text-lg font-bold"
+            >
+              PRIVACY POLICY
+            </p>
+          </li>
+          <li>
+            <p
+              class="text-black text-capitalize font-space-mono text-lg font-bold"
+            >
+              COOKIE POLICY
+            </p>
+          </li>
+          <li>
+            <p
+              class="text-black text-capitalize font-space-mono text-lg font-bold"
+            >
+              COOKIE SETTINGS
+            </p>
+          </li>
+        </ul>
+        <ul class="flex flex-col gap-[19px] w-[300px]">
+          <li>
+            <p
+              class="text-black text-capitalize font-space-mono text-lg font-bold"
+            >
+              ABOUT SECOND CHANCE
+            </p>
+          </li>
+          <li>
+            <p
+              class="text-black text-capitalize font-space-mono text-lg font-bold"
+            >
+              CAREER
+            </p>
+          </li>
+          <li>
+            <p
+              class="text-black text-capitalize font-space-mono text-lg font-bold"
+            >
+              FACEBOOK
+            </p>
+          </li>
+          <li>
+            <p
+              class="text-black text-capitalize font-space-mono text-lg font-bold"
+            >
+              INSTAGRAM
+            </p>
+          </li>
+        </ul>
+        <div class="w-[300px] flex items-center justify-center lg:hidden">
+          <svg class="w-20 h-20">
+            <use href="./img/icons.svg#icon-Logomark"></use>
+          </svg>
+        </div>
+      </div>
+    </footer>
+    <script src="js/index.js" type="module"></script>
+    <script src="js/blackAlert.js" type="module"></script>
+    <script src="js/basketProducts.js" type="module"></script>
   </body>
 </html>
