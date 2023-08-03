@@ -1,28 +1,28 @@
 import imagesNot from '../images/not-images.jpg';
-import { products } from "./fetchProducts.js";
-const paginationContainer = document.querySelector("#pagination");
+import { products } from './fetchProducts.js';
+const paginationContainer = document.querySelector('#pagination');
 export const limit = 24;
 export let page = 1;
 let totalPages = null;
 
-paginationContainer.addEventListener("click", handlePageTarget);
+paginationContainer.addEventListener('click', handlePageTarget);
 function handlePageTarget(e) {
-  if (e.target.nodeName !== "LI" && e.target.nodeName !== "A") return;
+  if (e.target.nodeName !== 'LI' && e.target.nodeName !== 'A') return;
   const clickedPage = e.target.dataset.page;
-  const currentPage = paginationContainer.querySelector(".active-page");
+  const currentPage = paginationContainer.querySelector('.active-page');
   if (currentPage === e.target.parentNode) return;
   if (currentPage) {
-    currentPage.classList.remove("active-page");
-    currentPage.classList.add("bg-yellow-50", "text-importantText");
+    currentPage.classList.remove('active-page');
+    currentPage.classList.add('bg-yellow-50', 'text-importantText');
   }
-  if (e.target.parentNode.nodeName === "UL") {
+  if (e.target.parentNode.nodeName === 'UL') {
     return;
   }
-  e.target.parentNode.classList.remove("bg-yellow-50", "text-importantText");
-  e.target.parentNode.classList.add("bg-black", "text-yellow-50");
-  e.target.parentNode.classList.add("active-page");
+  e.target.parentNode.classList.remove('bg-yellow-50', 'text-importantText');
+  e.target.parentNode.classList.add('bg-black', 'text-yellow-50');
+  e.target.parentNode.classList.add('active-page');
   page = clickedPage;
-  products(limit, page).then((res) => {
+  products(limit, page).then(res => {
     renderProducts(res.products);
     calculatePagination(461);
   });
@@ -34,7 +34,7 @@ function calculatePagination(totalProducts) {
 }
 function renderPagination() {
   const maxVisiblePages = 4;
-  let pagesElements = "";
+  let pagesElements = '';
 
   let startPage = Math.max(1, page - maxVisiblePages);
   let endPage = Math.min(totalPages, Number(page) + maxVisiblePages);
@@ -51,8 +51,8 @@ function renderPagination() {
   for (let i = startPage; i <= endPage; i += 1) {
     const isActivePage = i === parseInt(page);
     const activeClass = isActivePage
-      ? "bg-black text-yellow-50"
-      : "bg-yellow-50 text-importantText";
+      ? 'bg-black text-yellow-50'
+      : 'bg-yellow-50 text-importantText';
 
     pagesElements += `<li class="transition-all duration-250 ease-out hover:bg-black hover:text-yellow-50 w-10 h-10 rounded-full justify-center flex items-center border border-black ${activeClass}">
       <a
@@ -72,11 +72,11 @@ function renderPagination() {
     </li>`;
   }
 
-  paginationContainer.innerHTML = "";
-  paginationContainer.insertAdjacentHTML("beforeend", pagesElements);
+  paginationContainer.innerHTML = '';
+  paginationContainer.insertAdjacentHTML('beforeend', pagesElements);
 }
 
-products(limit, page).then((res) => {
+products(limit, page).then(res => {
   renderProducts(res.products);
   calculatePagination(461);
 });
@@ -120,7 +120,7 @@ function renderProducts(data) {
  </li>
     `;
     })
-    .join("");
-  listProduct.innerHTML = "";
-  listProduct.insertAdjacentHTML("beforeend", productItem);
+    .join('');
+  listProduct.innerHTML = '';
+  listProduct.insertAdjacentHTML('beforeend', productItem);
 }

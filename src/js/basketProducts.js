@@ -73,6 +73,7 @@ function totalPriceProducts() {
 }
 
 const renderProductsBaket = () => {
+  console.log(productItem);
   const productItemBasket = productItem
     .map(({ title, images, variants, id, number }) => {
       const price = (
