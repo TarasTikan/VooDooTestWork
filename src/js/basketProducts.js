@@ -64,7 +64,6 @@ function handleRemoveCard(e) {
   totalProductsNumber();
 }
 
-
 const renderProductsBaket = () => {
   const productItemBasket = productItem
     .map(({ title, images, variants, id, number }) => {
