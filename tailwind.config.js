@@ -8,7 +8,6 @@ module.exports = {
         widthMobileContainer: '342px',
         widthContainerMain: '1272px',
         widthBasketContainer: '362px',
-        widthInfoProduct: '231px',
         widthImortantText: '1024',
         widthContainerInfoFooter: '300px',
       },

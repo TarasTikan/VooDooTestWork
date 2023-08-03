@@ -64,35 +64,27 @@ function handleRemoveCard(e) {
   totalProductsNumber();
 }
 
-function totalPriceProducts() {
-  const total = productItem.reduce((cal, item) => {
-    return cal + Number(item.variants[0].price) * item.number;
-  }, 0);
-  totalPrice.innerHTML = ' KR.';
-  totalPrice.insertAdjacentHTML('afterbegin', total.toLocaleString('en-US'));
-}
 
 const renderProductsBaket = () => {
-  console.log(productItem);
   const productItemBasket = productItem
     .map(({ title, images, variants, id, number }) => {
       const price = (
         (variants[0].price || variants[0].compare_at_price) * number
       ).toLocaleString('en-US');
       const deleteIconHtml = `<svg width="24px" height="24px" id="${id}">
-        <use href=${exitSvg}#deleteIcon id="${id}"></use>
+      <use href=${exitSvg}#deleteIcon id="${id}"></use>
       </svg>`;
       return `
       <li class="flex gap-4 items-start ">
         <img
-          src="${images.length > 0 ? images[0].src : imagesNot}"
+        src="${images.length > 0 ? images[0].src : imagesNot}"
           class="rounded-md border border-white border-opacity-50 w-[74px]"
-        />
-        <div class="flex flex-col  justify-between w-widthInfoProduct h-heightImgBasket grid">
+          />
+        <div class="flex flex-col  justify-between w-[231px] h-heightImgBasket grid">
           <h3 class="text-yellow-50 text-sm font-bold">${title}</h3>
           <p class="text-yellow-50 text-sm font-bold"> ${price} KR.</p>
           <div class="flex"><button type='button' class="w-5 h-5 text-center text-yellow-50 text-sm font-bold" id="minus-${id}">-</button><p class="w-5 h-5 text-center text-yellow-50 text-sm font-bold" id="number">${number}</p><button type='button' class="w-5 h-5 text-center text-yellow-50 text-sm font-bold" id="plus-${id}">+</button></div>
-        </div>
+          </div>
         <button type='button' id="${id}">${deleteIconHtml}</button>
       </li>`;
     })
@@ -123,4 +115,12 @@ function handleMinusBtn(e) {
 
 function handelToggleBasket() {
   basketContainer.classList.toggle('hidden');
+}
+
+function totalPriceProducts() {
+  const total = productItem.reduce((cal, item) => {
+    return cal + Number(item.variants[0].price) * item.number;
+  }, 0);
+  totalPrice.innerHTML = ' KR.';
+  totalPrice.insertAdjacentHTML('afterbegin', total.toLocaleString('en-US'));
 }
