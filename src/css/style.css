@@ -1132,10 +1132,6 @@ video {
     width: 300px;
   }
 
-  .lg\:w-full {
-    width: 100%;
-  }
-
   .lg\:w-widthContainer {
     width: 1330px;
   }
@@ -1151,6 +1147,10 @@ video {
 
   .lg\:flex-wrap {
     flex-wrap: wrap;
+  }
+
+  .lg\:justify-center {
+    justify-content: center;
   }
 
   .lg\:gap-12 {
